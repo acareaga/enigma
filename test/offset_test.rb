@@ -7,7 +7,7 @@ class OffsetTest < Minitest::Test
 
   def test_date_exists_and_is_formatted_correctly
     today = Offset.new
-    assert_equal "140915", today.date
+    assert_equal "150915", today.date
   end
 
   def test_offset_takes_last_four_digits
@@ -16,9 +16,23 @@ class OffsetTest < Minitest::Test
   end
 
   def test_offset_position_a
-    skip
     position = Offset.new
-    assert_equal "7", position.offset_position
+    assert_equal "7", position.offset_position_a
+  end
+
+  def test_offset_position_b
+    position = Offset.new
+    assert_equal "2", position.offset_position_b
+  end
+
+  def test_offset_position_c
+    position = Offset.new
+    assert_equal "2", position.offset_position_c
+  end
+
+  def test_offset_position_d
+    position = Offset.new
+    assert_equal "5", position.offset_position_d
   end
 
 end

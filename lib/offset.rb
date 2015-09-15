@@ -32,11 +32,25 @@ class Offset
     offset = square.to_s[-4..-1]
   end
 
-  def offset_position
-    offset_a = offset[0]
-    offset_b = last_four[1]
-    offset_c = last_four[2]
-    offset_d = last_four[3]
+  def offset_position_a
+    offset[0]
+  end
+
+  def offset_position_b
+    offset[1]
+  end
+
+  def offset_position_c
+    offset[2]
+  end
+
+  def offset_position_d
+    offset[3]
   end
 
 end
+
+# offset_a = offset[0]
+# offset_b = offset[1]
+# offset_c = offset[2]
+# offset_d = offset[3]
