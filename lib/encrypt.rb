@@ -13,12 +13,12 @@ class Encrypt
   end
 
   def split_text
-    array_of_slices = []
+    chunks = []
     until text.empty?
-      array_of_slices << text.slice!(0..3)
+      chunks << text.slice!(0..3)
     end
-    array_of_arrays = array_of_slices.map do |string|
-      string.chars
+    characters = chunks.map do |strings|
+      strings.chars
     end
   end
 
