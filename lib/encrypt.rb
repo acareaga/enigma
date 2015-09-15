@@ -1,5 +1,5 @@
-require './lib/offset'
-require './lib/key'
+require '../lib/offset'
+require '../lib/key'
 require 'pry'
 
 class Encrypt
@@ -8,7 +8,7 @@ class Encrypt
 
   def initialize(input_file)
     @input_file = input_file
-    @text = File.open(input_file).read.chomp.gsub("\n\n", " ")
+    @text = "This is a test message"#File.open(input_file).read.chomp.gsub("\n\n", " ")
     split_text
   end
 
@@ -22,8 +22,8 @@ class Encrypt
     end
   end
 
-  def generate_character_map
-    character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ",", "."]
+  def character_map
+    character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
   end
 
   def encrypt_text
