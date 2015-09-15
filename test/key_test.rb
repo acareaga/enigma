@@ -16,31 +16,22 @@ class KeyTest < Minitest::Test
     refute_equal key_one, key_two
   end
 
-  def test_it_assigns_digit_one_and_two_to_rotation_A
-    position = Key.new
+  def test_it_assigns_digit_one_and_two_to_rotation_a
+    key = [1, 2, 3, 4, 5]
 
-    assert_equal 12, key.rotation_A
+    assert_equal '12', key.rotation_a
   end
 
-  def test_it_assigns_digit_two_and_three_to_rotation_B
+  def test_it_assigns_digit_two_and_three_to_rotation_b
     skip
-    key = Key.new
-
-    assert_equal key.generate_key[1..2], key.rotation_B
   end
 
-  def test_it_assigns_digit_three_and_four_to_rotation_C
+  def test_it_assigns_digit_three_and_four_to_rotation_c
     skip
-    key = Key.new
-
-    assert_equal key.generate_key[2..3], key.rotation_C
   end
 
-  def test_it_assigns_digit_four_and_five_to_rotation_D
+  def test_it_assigns_digit_four_and_five_to_rotation_d
     skip
-    key = Key.new
-
-    assert_equal key.generate_key[3..4], key.rotation_D
   end
 
 end

@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 require_relative 'offset'
 require_relative 'key'
+=======
+require '../lib/offset'
+require '../lib/key'
+>>>>>>> 3a788fc27cff3dbcd85db3f3234e51ea215db8d5
 require 'pry'
 
 class Encrypt
@@ -24,7 +29,7 @@ class Encrypt
   end
 
   def character_map
-    character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ",", "."]
+    character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
   end
 
   def combine_offset_and_key_abcd
