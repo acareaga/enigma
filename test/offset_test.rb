@@ -15,4 +15,10 @@ class OffsetTest < Minitest::Test
     assert_equal "7225", today.offset
   end
 
+  def test_offset_position_a
+    skip
+    position = Offset.new
+    assert_equal "7", position.offset_position
+  end
+
 end
