@@ -60,3 +60,10 @@ end
 
 input_file = ARGV[0]
 Encrypt.new(input_file).package_output_file
+
+if im_running_code
+  input_file = ARGV[0]
+  output_file = ARGV[1]
+end
+
+im_running_code = ($PROGRAM_NAME == __FILE__)
