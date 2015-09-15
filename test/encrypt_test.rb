@@ -1,9 +1,12 @@
 
 # capture input text: ruby ./lib/encrypt.rb message.txt encrypted.txt
+# split into chunks of 4
+# (each chunk of 4 is in a array - must recognize spaces)
 # generate key
 # generate offset
 # pass key and offset into encryptor
 # rotate on charactermap for plain text character using the key + offset
+# last chunk must function with less than 4 characters
 
 # Four characters are encrypted at a time.
 # The first character is rotated forward by the "A" rotation plus the "A offset"

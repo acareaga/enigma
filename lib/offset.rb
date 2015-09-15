@@ -20,19 +20,19 @@ class Offset
   end
 
   def offset_position_a
-    offset[0]
+    offset[0].to_i
   end
 
   def offset_position_b
-    offset[1]
+    offset[1].to_i
   end
 
   def offset_position_c
-    offset[2]
+    offset[2].to_i
   end
 
   def offset_position_d
-    offset[3]
+    offset[3].to_i
   end
 
 end

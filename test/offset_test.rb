@@ -17,22 +17,22 @@ class OffsetTest < Minitest::Test
 
   def test_offset_position_a
     position = Offset.new
-    assert_equal "7", position.offset_position_a
+    assert_equal 7, position.offset_position_a
   end
 
   def test_offset_position_b
     position = Offset.new
-    assert_equal "2", position.offset_position_b
+    assert_equal 2, position.offset_position_b
   end
 
   def test_offset_position_c
     position = Offset.new
-    assert_equal "2", position.offset_position_c
+    assert_equal 2, position.offset_position_c
   end
 
   def test_offset_position_d
     position = Offset.new
-    assert_equal "5", position.offset_position_d
+    assert_equal 5, position.offset_position_d
   end
 
 end
