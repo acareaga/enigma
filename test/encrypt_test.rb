@@ -5,9 +5,9 @@ require '../lib/encrypt'
 
 class EncryptTest < Minitest::Test
 
-  def test_date_exists_and_is_formatted_correctly
-    today = Encrypt.new
-    assert
+  def test_encrpyt_class_exists
+    data = Encrypt.new
+    assert_equal "Class", data.class
   end
 
 end

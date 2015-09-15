@@ -1,5 +1,5 @@
-require './lib/offset'
-require './lib/key'
+require_relative 'offset'
+require_relative 'key'
 require 'pry'
 
 class Encrypt
@@ -8,7 +8,7 @@ class Encrypt
 
   def initialize(input_file)
     @input_file = input_file
-    @text = File.open(input_file).read.chomp.gsub("\n\n", " ")
+    @text = "This is a test message." # File.open(input_file).read.chomp.gsub("\n\n", " ")
     split_text
   end
 
@@ -20,15 +20,31 @@ class Encrypt
     characters = chunks.map do |strings|
       strings.chars
     end
+    combine_offset_and_key_abcd
   end
 
-  def generate_character_map
+  def character_map
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ",", "."]
   end
 
-  def encrypt_text
-
+  def combine_offset_and_key_abcd
+    rotation = Key.new
+    position = Offset.new
+    a = position.offset_position_a
+    binding.pry
   end
+
+  # def encrypt_text
+  #   characters.each do |nested_array|
+  #     encrypt_text << nested_array.rotate
+  #   end
+  # end
+  #
+  # def rotate
+  #   nested_array.each do |character|
+  #     encrypted_text << # rotate through map
+  #   end
+  # end
 
   def package_output_file
     output_file = File.open("encrypted.txt", 'w')

@@ -36,8 +36,3 @@ class Offset
   end
 
 end
-
-# offset_a = offset[0]
-# offset_b = offset[1]
-# offset_c = offset[2]
-# offset_d = offset[3]

@@ -1,36 +1,34 @@
 class Key
 
-  attr_accessor :key
+  attr_accessor :key, :generate_key  # => nil
 
   def initialize
-    @key = generate_key
-  end
-
-  def key
-    @key
-  end
+    @key = key
+    @generate_key = generate_key
+  end                             # => :initialize
 
   def generate_key
-    @key = [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
-  end
+    # key = [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
+    key = [12345]
+  end                                                                   # => :generate_key
 
-  def rotation_A
-    @key[0..1]
-  end
+  def rotation_a
+    key[0..1]
+  end             # => :rotation_a
 
-  def rotation_B
-    @key[1..2]
-  end
+  def rotation_b
+    key[1..2]
+  end             # => :rotation_b
 
-  def rotation_C
-    @key[2..3]
-  end
+  def rotation_c
+    key[2..3]
+  end             # => :rotation_c
 
-  def rotation_D
-    @key[3..4]
-  end
+  def rotation_d
+    key[3..4]
+  end             # => :rotation_d
 
-end
+end  # => :rotation_d
 
 # key = Key.new
 # key = key.generate_key
