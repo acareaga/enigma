@@ -1,5 +1,5 @@
-require '../lib/offset'
-require '../lib/key'
+require './lib/offset'
+require './lib/key'
 require 'pry'
 
 class Encrypt
@@ -30,7 +30,10 @@ class Encrypt
   def combine_offset_and_key_abcd
     rotation = Key.new
     position = Offset.new
-    a = position.offset_position_a
+    a = position.offset_position_a + rotation.rotation_a.to_i
+    b = position.offset_position_b + rotation.rotation_b.to_i
+    c = position.offset_position_c + rotation.rotation_c.to_i
+    d = position.offset_position_d + rotation.rotation_d.to_i
     binding.pry
   end
 

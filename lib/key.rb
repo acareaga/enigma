@@ -1,10 +1,9 @@
 class Key
 
-  attr_accessor :key, :generate_key
+  attr_reader :key, :generate_key
 
   def initialize
-    @key = key
-    @generate_key = generate_key
+    @key = generate_key # [1,2,3,4,5]
   end
 
   def generate_key
@@ -12,19 +11,19 @@ class Key
   end
 
   def rotation_a
-    @key[0].to_s + @key[1].to_s
+    key[0].to_s + key[1].to_s
   end
 
   def rotation_b
-    @key[1].to_s + @key[2].to_s
+    key[1].to_s + key[2].to_s
   end
 
   def rotation_c
-    @key[2].to_s + @key[3].to_s
+    key[2].to_s + key[3].to_s
   end
 
   def rotation_d
-    @key[3].to_s + @key[4].to_s
+    key[3].to_s + key[4].to_s
   end
 
 end
