@@ -32,10 +32,10 @@ class Key
 
 end
 
-key = Key.new
-key = key.generate_key
-p key
-p key[0..1]
-p key[1..2]
-p key[2..3]
-p key[3..4]
+# key = Key.new
+# key = key.generate_key
+# p key
+# p key[0..1]
+# p key[1..2]
+# p key[2..3]
+# p key[3..4]
