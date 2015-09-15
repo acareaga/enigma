@@ -11,20 +11,7 @@ class Offset
   end
 
   def date
-    day = Date.today.day
-      if day < 10
-        day = "0#{day}"
-      else
-        day = "#{day}"
-      end
-    month = Date.today.month
-      if month < 10
-        month = "0#{month}"
-      else
-        month = "#{month}"
-      end
-    year = Date.today.year.to_s[-2..-1]
-    date = "#{day}#{month}#{year}"
+    date = Date.today.strftime("%d%m%y")
   end
 
   def offset

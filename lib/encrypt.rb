@@ -4,7 +4,7 @@ require 'pry'
 
 class Encrypt
 
-  attr_accessor :input_file, :my_output, :text
+  attr_accessor :input_file, :output_file, :text
 
   def initialize(input_file)
     @input_file = input_file
