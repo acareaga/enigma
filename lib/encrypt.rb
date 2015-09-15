@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-require_relative 'offset'
-require_relative 'key'
-=======
 require '../lib/offset'
 require '../lib/key'
->>>>>>> 3a788fc27cff3dbcd85db3f3234e51ea215db8d5
 require 'pry'
 
 class Encrypt
