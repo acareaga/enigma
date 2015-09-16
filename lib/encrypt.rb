@@ -1,5 +1,5 @@
-require '../lib/offset'
-require '../lib/key'
+require './lib/offset'
+require './lib/key'
 require 'pry'
 
 class Encrypt
@@ -28,9 +28,9 @@ class Encrypt
   end
 
   def combine_offset_and_key_abcd
-    rotation = Key.new
-    position = Offset.new
-    a = position.offset_position_a
+    offset = Offset.new
+    key = Key.new
+    offset.position
     binding.pry
   end
 
@@ -57,3 +57,10 @@ end
 
 input_file = ARGV[0]
 Encrypt.new(input_file).package_output_file
+
+if im_running_code
+  input_file = ARGV[0]
+  output_file = ARGV[1]
+end
+
+im_running_code = ($PROGRAM_NAME == __FILE__)

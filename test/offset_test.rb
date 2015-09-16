@@ -35,4 +35,9 @@ class OffsetTest < Minitest::Test
     assert_equal 5, position.offset_position_d
   end
 
+  def test_offset_position
+    offset = Offset.new
+    assert_equal [7, 2, 2, 5], offset.position
+  end
+
 end

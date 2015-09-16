@@ -3,11 +3,12 @@ require 'date'
 
 class Offset
 
-  attr_reader :date, :offset
+  attr_reader :date, :offset, :position
 
   def initialize
     @date = date
     @offset = offset
+    @position = position
   end
 
   def date
@@ -33,6 +34,10 @@ class Offset
 
   def offset_position_d
     offset[3].to_i
+  end
+
+  def position
+    [offset[0].to_i, offset[1].to_i, offset[2].to_i, offset[3].to_i]
   end
 
 end
