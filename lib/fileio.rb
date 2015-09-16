@@ -1,11 +1,9 @@
 class FileIO
 
-  attr_reader :input_file, :output_file, :text
+  attr_reader :file, :output_file
 
   def initialize(input_file)
-    @input_file = input_file
-    @text = File.open(input_file).read.chomp.gsub("\n\n", " ")
-    Encrypt.new(text)
+    @file = File.open(input_file).read.chomp.gsub("\n\n", " ")
   end
 
   def package_output_file
@@ -16,10 +14,3 @@ class FileIO
   end
 
 end
-
-# if im_running_code
-#   input_file = ARGV[0]
-#   output_file = ARGV[1]
-# end
-#
-# im_running_code = ($PROGRAM_NAME == __FILE__)
