@@ -1,14 +1,13 @@
 class Key
 
-  attr_accessor :key, :generate_key
+  attr_reader :key, :generate_key
 
   def initialize
-    @key = key
-    @generate_key = generate_key
+    @key = generate_key # [1, 2, 3, 4, 5]
   end
 
   def generate_key
-    key = [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
+    [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
   end
 
   def rotation_a
