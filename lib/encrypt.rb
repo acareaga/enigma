@@ -7,9 +7,10 @@ class Encrypt
 
   attr_accessor :text, :split_text
 
-  def initialize
-    @text = FileIO.text
+  def initialize(text)
+    @text = text
     split_text
+    binding.pry
   end
 
   def split_text
@@ -20,7 +21,7 @@ class Encrypt
     characters = chunks.map do |strings|
       strings.chars
     end
-    encrypt_text
+    combine_offset_and_key_abcd
   end
 
   def combine_offset_and_key_abcd
@@ -45,10 +46,3 @@ end
 
 input_file = ARGV[0]
 FileIO.new(input_file).package_output_file
-
-# if im_running_code
-#   input_file = ARGV[0]
-#   output_file = ARGV[1]
-# end
-#
-# im_running_code = ($PROGRAM_NAME == __FILE__)

@@ -5,6 +5,7 @@ class FileIO
   def initialize(input_file)
     @input_file = input_file
     @text = File.open(input_file).read.chomp.gsub("\n\n", " ")
+    Encrypt.new(text)
   end
 
   def package_output_file
@@ -15,3 +16,10 @@ class FileIO
   end
 
 end
+
+# if im_running_code
+#   input_file = ARGV[0]
+#   output_file = ARGV[1]
+# end
+#
+# im_running_code = ($PROGRAM_NAME == __FILE__)
