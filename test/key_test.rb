@@ -35,4 +35,9 @@ class KeyTest < Minitest::Test
     assert_equal "45", key.rotation_d
   end
 
+  def test_key_position
+    key = Key.new
+    assert_equal [46, 97, 91, 77], key.position
+  end
+
 end

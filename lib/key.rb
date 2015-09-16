@@ -7,7 +7,7 @@ class Key
   end
 
   def generate_key
-    key = [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
+    [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
   end
 
   def rotation_a
@@ -24,6 +24,10 @@ class Key
 
   def rotation_d
     key[3].to_s + key[4].to_s
+  end
+
+  def position
+    [rotation_a, rotation_b, rotation_c, rotation_d]
   end
 
 end
