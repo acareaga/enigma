@@ -5,7 +5,7 @@ require 'pry'
 
 class Encrypt
 
-  attr_reader :encryption_chunks, :text, :position
+  attr_reader :encryption_chunks, :text, :position, :rotate
 
   def initialize
     input_file = ARGV[0] # './message.txt'
@@ -37,12 +37,19 @@ class Encrypt
   def find_character_index_position
     position = []
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    @encryption_chunks.map do |array|
-      array.map do |string|
+    @encryption_chunks.each do |array|
+      array.each do |string|
         position << character_map.find_index(string)
       end
     end
     binding.pry
+  end
+
+  def add_rotation_to_positions
+    encrypted_positions = []
+    positions.each do |num|
+      encrypted_positions << num + @rotate
+    end
   end
 
   # Add to encrypter_array.package_output_file
