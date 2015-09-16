@@ -7,8 +7,8 @@ class Encrypt
 
   attr_accessor :text, :split_text
 
-  def initialize(text)
-    @text = "This is a test message."
+  def initialize
+    @text = FileIO.text
     split_text
   end
 
@@ -31,7 +31,6 @@ class Encrypt
     c = offset.position[2] + key.position[2].to_i
     d = offset.position[3] + key.position[3].to_i
     rotate = [a, b, c, d]
-    binding.pry
   end
 
   def encrypt_text
@@ -50,7 +49,7 @@ class Encrypt
 end
 
 input_file = ARGV[0]
-Encrypt.new(input_file).package_output_file
+FileIO.new(input_file).package_output_file
 
 if im_running_code
   input_file = ARGV[0]
