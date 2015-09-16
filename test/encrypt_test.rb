@@ -6,6 +6,7 @@ require '../lib/encrypt'
 class EncryptTest < Minitest::Test
 
   def test_encrypt_class_exists
+    skip
     data = Encrypt.new
     assert_equal Encrypt, data.class
   end
@@ -72,6 +73,17 @@ class EncryptTest < Minitest::Test
 
   def test_we_can_navigate_the_character_map_backwards
     skip
+  end
+
+  def test_we_can_find_position_of_first_character
+    text = [["I", " ", "a", "m"],["I", " ", "a", "m"]]
+    character = text[0][0]
+    assert_equal "I", character
+  end
+
+  def test_we_can_find_character_position_in_map
+    skip
+    position = map.find_index("#{character.downcase}")
   end
 
 end

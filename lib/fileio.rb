@@ -3,7 +3,7 @@ class FileIO
   attr_reader :file, :output_file
 
   def initialize(input_file)
-    @file = File.open(input_file).read.chomp.gsub("\n\n", " ")
+    @file = File.open(input_file).read.chomp.gsub("\n\n", " ").downcase
   end
 
   def package_output_file

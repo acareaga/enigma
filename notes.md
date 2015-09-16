@@ -19,3 +19,13 @@
 * display: Created 'encrypted.txt' with the key 82648 and date 030415
 
 * repeat process with decrypt and crack.rb
+
+
+----Override ARGV----
+
+if im_running_code
+  input_file = ARGV[0]
+  output_file = ARGV[1]
+end
+
+im_running_code = ($PROGRAM_NAME == __FILE__)

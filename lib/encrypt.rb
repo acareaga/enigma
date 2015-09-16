@@ -5,10 +5,10 @@ require 'pry'
 
 class Encrypt
 
-  attr_reader :characters, :text
+  attr_reader :encryption_chunks, :text, :position
 
   def initialize
-    input_file = ARGV[0]
+    input_file = ARGV[0] # './message.txt'
     @text = FileIO.new(input_file).file
     split_text
   end
@@ -18,10 +18,10 @@ class Encrypt
     until text.empty?
       chunks << text.slice!(0..3)
     end
-    @characters = chunks.map do |strings|
+    @encryption_chunks = chunks.map do |strings|
       strings.chars
     end
-    encrypt_text
+    find_character_index_position
   end
 
   def combine_offset_and_key_abcd
@@ -34,23 +34,19 @@ class Encrypt
     rotate = [a, b, c, d]
   end
 
-  def encrypt_text
+  def find_character_index_position
+    position = []
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    binding.pry
-    characters.each do |nested_array|
-      encrypt_text << nested_array.rotate % character_map
+    @encryption_chunks.map do |array|
+      array.map do |string|
+        position << character_map.find_index(string)
+      end
     end
+    binding.pry
   end
+
+  # Add to encrypter_array.package_output_file
+
 end
 
 Encrypt.new
-
-# input_file = ARGV[0]
-# FileIO.new(input_file) #.package_output_file
-
-# if im_running_code
-#   input_file = ARGV[0]
-#   output_file = ARGV[1]
-# end
-#
-# im_running_code = ($PROGRAM_NAME == __FILE__)
