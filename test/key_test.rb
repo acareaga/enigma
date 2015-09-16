@@ -17,27 +17,27 @@ class KeyTest < Minitest::Test
 
   def test_it_assigns_digit_one_and_two_to_rotation_a
     key = Key.new
-    assert_equal "12", key.rotation_a
+    assert_equal "85", key.rotation_a
   end
 
   def test_it_assigns_digit_two_and_three_to_rotation_b
     key = Key.new
-    assert_equal "23", key.rotation_b
+    assert_equal "53", key.rotation_b
   end
 
   def test_it_assigns_digit_three_and_four_to_rotation_c
     key = Key.new
-    assert_equal "34", key.rotation_c
+    assert_equal "35", key.rotation_c
   end
 
   def test_it_assigns_digit_four_and_five_to_rotation_d
     key = Key.new
-    assert_equal "45", key.rotation_d
+    assert_equal "59", key.rotation_d
   end
 
   def test_key_position
     key = Key.new
-    assert_equal [46, 97, 91, 77], key.position
+    assert_equal ["85", "53", "35", "59"], key.position
   end
 
 end

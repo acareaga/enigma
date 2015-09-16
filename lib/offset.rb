@@ -20,19 +20,19 @@ class Offset
     offset = square.to_s[-4..-1]
   end
 
-  def offset_position_a
+  def position_a
     offset[0].to_i
   end
 
-  def offset_position_b
+  def position_b
     offset[1].to_i
   end
 
-  def offset_position_c
+  def position_c
     offset[2].to_i
   end
 
-  def offset_position_d
+  def position_d
     offset[3].to_i
   end
 

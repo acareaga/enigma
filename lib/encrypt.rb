@@ -1,14 +1,14 @@
+require './lib/fileio'
 require './lib/offset'
 require './lib/key'
 require 'pry'
 
 class Encrypt
 
-  attr_accessor :input_file, :output_file, :text, :split_text
+  attr_accessor :text, :split_text
 
-  def initialize(input_file)
-    @input_file = input_file
-    @text = "This is a test message." # File.open(input_file).read.chomp.gsub("\n\n", " ")
+  def initialize(text)
+    @text = "This is a test message."
     split_text
   end
 
@@ -30,7 +30,7 @@ class Encrypt
   def combine_offset_and_key_abcd
     offset = Offset.new
     key = Key.new
-    offset.position
+    rotate = offset.position + key.position
     binding.pry
   end
 
@@ -46,17 +46,10 @@ class Encrypt
   #   end
   # end
 
-  def package_output_file
-    output_file = File.open("encrypted.txt", 'w')
-    # output_file.write(encrypt_text)
-    date = Date.today.strftime("%d%m%y")
-    puts "Created '#{output_file}' with the key .... and date #{date}"
- end
-
 end
 
 input_file = ARGV[0]
-Encrypt.new(input_file).package_output_file
+FileIO.new(input_file).package_output_file
 
 if im_running_code
   input_file = ARGV[0]

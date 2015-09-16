@@ -3,11 +3,11 @@ class Key
   attr_reader :key, :generate_key
 
   def initialize
-    @key = generate_key # [1,2,3,4,5]
+    @key = generate_key
   end
 
   def generate_key
-    [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
+    [8, 5, 3, 5, 9] # [rand(0..9), rand(0..9), rand(0..9), rand(0..9), rand(0..9)]
   end
 
   def rotation_a
@@ -31,10 +31,3 @@ class Key
   end
 
 end
-
-# key = Key.new
-# p key
-# p key.rotation_a
-# p key.rotation_b
-# p key.rotation_c
-# p key.rotation_d
