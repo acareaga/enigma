@@ -20,7 +20,7 @@ class Encrypt
     characters = chunks.map do |strings|
       strings.chars
     end
-    combine_offset_and_key_abcd
+    encrypt_text
   end
 
   def combine_offset_and_key_abcd
@@ -35,25 +35,20 @@ class Encrypt
 
   def encrypt_text
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
+    binding.pry
     characters.each do |nested_array|
-      encrypt_text << nested_array.rotate
+      encrypt_text << nested_array.rotate % character_map
     end
   end
-
-  # def rotate
-  #   nested_array.each do |character|
-  #     encrypted_text << # rotate through map
-  #   end
-  # end
 
 end
 
 input_file = ARGV[0]
 FileIO.new(input_file).package_output_file
 
-if im_running_code
-  input_file = ARGV[0]
-  output_file = ARGV[1]
-end
-
-im_running_code = ($PROGRAM_NAME == __FILE__)
+# if im_running_code
+#   input_file = ARGV[0]
+#   output_file = ARGV[1]
+# end
+#
+# im_running_code = ($PROGRAM_NAME == __FILE__)

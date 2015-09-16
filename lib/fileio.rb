@@ -1,6 +1,3 @@
-# require './lib/encrypt'
-# require 'pry'
-
 class FileIO
 
   attr_reader :input_file, :output_file, :text
@@ -8,7 +5,6 @@ class FileIO
   def initialize(input_file)
     @input_file = input_file
     @text = File.open(input_file).read.chomp.gsub("\n\n", " ")
-    # jump back to encrypt
   end
 
   def package_output_file
