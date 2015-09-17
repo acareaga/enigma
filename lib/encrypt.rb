@@ -43,7 +43,7 @@ class Encrypt
 
   def find_character_index_position
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    encryption_chunks.each do |array|
+    @encryption_chunks.each do |array|
       array.each do |string|
         position << character_map.find_index(string)
       end
@@ -63,10 +63,16 @@ class Encrypt
   def convert_position_to_encrypted_text
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
     encrypted_position.each do |num|
-      @encrypted_text << character_map.rotate(num)[0]
+      encrypted_text << character_map.rotate(num)[0]
     end
-    @encrypted_text = @encrypted_text.join
+    encrypt_output_file
+  end
+
+  def encrypt_output_file
+    @encrypted_text = encrypted_text.join
     @io.package_output_file(@encrypted_text)
+    date = Date.today.strftime("%d%m%y")
+    puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{date}"
   end
 
 end

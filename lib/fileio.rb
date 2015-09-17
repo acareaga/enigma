@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'key'
 
 class FileIO
 
@@ -11,8 +12,6 @@ class FileIO
   def package_output_file(text)
     output_file = File.open("encrypted.txt", 'w')
     output_file.write(text)
-    date = Date.today.strftime("%d%m%y")
-    puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{date}"
   end
 
 end
