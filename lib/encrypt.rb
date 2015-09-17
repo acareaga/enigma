@@ -11,7 +11,8 @@ class Encrypt
 
   def initialize
     input_file = ARGV[0] # './message.txt'
-    @text = FileIO.new(input_file).file
+    @io = FileIO.new(input_file)
+    @text = @io.file
     @position = []
     @encrypted_position = []
     @encrypted_text = []
@@ -62,9 +63,10 @@ class Encrypt
   def convert_position_to_encrypted_text
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
     encrypted_position.each do |num|
-      encrypted_text << character_map.rotate(num)[0]
+      @encrypted_text << character_map.rotate(num)[0]
     end
-    package_output_file(encrypted_text)
+    @encrypted_text = @encrypted_text.join
+    @io.package_output_file(@encrypted_text)
   end
 
 end
