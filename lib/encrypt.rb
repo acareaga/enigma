@@ -5,11 +5,13 @@ require 'pry'
 
 class Encrypt
 
-  attr_reader :encryption_chunks, :text, :position, :rotate
+  attr_reader :encryption_chunks, :text, :position, :rotate, :encrypted_position
 
   def initialize
     input_file = ARGV[0] # './message.txt'
     @text = FileIO.new(input_file).file
+    @position = []
+    @encrypted_position = []
     split_text
   end
 
@@ -21,39 +23,42 @@ class Encrypt
     @encryption_chunks = chunks.map do |strings|
       strings.chars
     end
-    find_character_index_position
+    add_offset_and_key
   end
 
-  def combine_offset_and_key_abcd
+  def add_offset_and_key
     offset = Offset.new
     key = Key.new
     a = offset.position[0] + key.position[0].to_i
     b = offset.position[1] + key.position[1].to_i
     c = offset.position[2] + key.position[2].to_i
     d = offset.position[3] + key.position[3].to_i
-    rotate = [a, b, c, d]
+    @rotate = [a, b, c, d]
+    find_character_index_position
   end
 
   def find_character_index_position
-    position = []
     character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    @encryption_chunks.each do |array|
+    encryption_chunks.each do |array|
       array.each do |string|
         position << character_map.find_index(string)
       end
     end
-    binding.pry
+    add_rotation_to_position
   end
 
-  def add_rotation_to_positions
-    encrypted_positions = []
-    positions.each do |num|
-      encrypted_positions << num + @rotate
+  def add_rotation_to_position
+    binding.pry
+    position.cycle do |num|
+      encrypted_position << num + rotate
     end
   end
 
-  # Add to encrypter_array.package_output_file
+  def convert_position_to_encrypted_text
+    # rotate positions back through map and write output
+  end
 
+  # Add to encrypter_array.package_output_file
 end
 
 Encrypt.new
