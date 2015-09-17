@@ -1,3 +1,5 @@
+require 'pry'
+
 class FileIO
 
   attr_reader :file, :output_file
@@ -6,11 +8,11 @@ class FileIO
     @file = File.open(input_file).read.chomp.gsub("\n\n", " ").downcase
   end
 
-  def package_output_file
+  def package_output_file(encrypted_text)
     output_file = File.open("encrypted.txt", 'w')
-    # output_file.write(encrypt_text)
+    output_file.write(encrypted_text.join)
     date = Date.today.strftime("%d%m%y")
-    puts "Created '#{output_file}' with the key .... and date #{date}"
+    puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{date}"
   end
 
 end

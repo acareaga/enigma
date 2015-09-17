@@ -5,12 +5,16 @@ require 'pry'
 
 class Encrypt
 
-  attr_reader :encryption_chunks, :text, :position, :rotate, :encrypted_position
+  attr_reader :encryption_chunks, :text, :position, :rotate,
+              :encrypted_position, :encrypted_text,
+              :character_map, :key
 
   def initialize
     input_file = ARGV[0] # './message.txt'
     @text = FileIO.new(input_file).file
     @position = []
+    @encrypted_position = []
+    @encrypted_text = []
     split_text
   end
 
@@ -27,7 +31,7 @@ class Encrypt
 
   def add_offset_and_key
     offset = Offset.new
-    key = Key.new
+    @key = Key.new
     a = offset.position[0] + key.position[0].to_i
     b = offset.position[1] + key.position[1].to_i
     c = offset.position[2] + key.position[2].to_i
@@ -47,19 +51,22 @@ class Encrypt
   end
 
   def add_rotation_to_position
-    encrypted_position = []
     counter = 0
     position.each do |num|
       encrypted_position << num + rotate[counter]
       counter = (counter + 1) % rotate.length
     end
+    convert_position_to_encrypted_text
   end
 
   def convert_position_to_encrypted_text
-    # rotate positions back through map and write output
+    character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
+    encrypted_position.each do |num|
+      encrypted_text << character_map.rotate(num)[0]
+    end
+    package_output_file(encrypted_text)
   end
 
-  # Add to encrypter_array.package_output_file
 end
 
 Encrypt.new
