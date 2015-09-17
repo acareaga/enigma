@@ -11,7 +11,6 @@ class Encrypt
     input_file = ARGV[0] # './message.txt'
     @text = FileIO.new(input_file).file
     @position = []
-    @encrypted_position = []
     split_text
   end
 
@@ -48,10 +47,11 @@ class Encrypt
   end
 
   def add_rotation_to_position
-    binding.pry
+    encrypted_position = []
+    counter = 0
     position.each do |num|
-      # Need to pull apart positions and rotate
-      encrypted_position << num + rotate
+      encrypted_position << num + rotate[counter]
+      counter = (counter + 1) % rotate.length
     end
   end
 
