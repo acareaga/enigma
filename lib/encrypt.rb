@@ -49,7 +49,8 @@ class Encrypt
 
   def add_rotation_to_position
     binding.pry
-    position.cycle do |num|
+    position.each do |num|
+      # Need to pull apart positions and rotate
       encrypted_position << num + rotate
     end
   end
