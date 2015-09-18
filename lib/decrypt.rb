@@ -62,10 +62,17 @@ class Decrypt
 
   def reverse_rotation
     array_of_chunks.each do |num|
-      @decrypted_position << num - rotation[counter]
-      counter = (counter - 1) % rotation.length
+      @decrypted_position << num -= rotation[counter]
+      counter = (counter -= 1) % rotation.length
     end
     binding.pry
+    # checkout .pred method on array
+
+    # while counter < position.length
+    #   position[0] - rotation[0]
+
+    # array.length.pred.times do |num|
+
     convert_position_to_decrypted_text
   end
 

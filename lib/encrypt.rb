@@ -21,12 +21,8 @@ class Encrypt
     create_offset_and_key
   end
 
-  # def valid_characters_in_input?
-  #   if character_map.include?(text)
-  #     true
-  #   else
-  #     puts "ERROR. Invalid input message."
-  #   end
+  # def valid_characters_in_input? # changed to inline if statement, verify still works
+  #   true if character_map.include?(text) else puts "ERROR. Invalid input message."
   # end
 
   def create_offset_and_key
@@ -47,7 +43,7 @@ class Encrypt
     add_rotation_to_position
   end
 
-  def add_rotation_to_position
+  def add_rotation_to_position #should + be changed to += ???
     counter = 0
     position.each do |num|
       encrypted_position << num + rotation[counter]
