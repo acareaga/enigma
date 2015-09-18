@@ -5,12 +5,12 @@ require 'pry'
 
 class Encrypt
 
-  attr_reader :plain_text, :position, :rotate,
+  attr_reader :plain_text, :position, :rotation,
               :encrypted_position, :encrypted_text,
               :character_map, :key, :date
 
   def initialize
-    input_file = ARGV[0] # './message.txt'
+    input_file = ARGV[0]
     @io = FileIO.new(input_file)
     @plain_text = @io.file.chars
     @position = []
@@ -21,9 +21,13 @@ class Encrypt
     create_offset_and_key
   end
 
-  def valid_characters_in_input?
-    # fail ArgumentError if text includes characters not on character map
-  end
+  # def valid_characters_in_input?
+  #   if character_map.include?(text)
+  #     true
+  #   else
+  #     puts "ERROR. Invalid input message."
+  #   end
+  # end
 
   def create_offset_and_key
     offset = Offset.new
@@ -32,7 +36,7 @@ class Encrypt
     b = offset.position[1] + key.position[1].to_i
     c = offset.position[2] + key.position[2].to_i
     d = offset.position[3] + key.position[3].to_i
-    @rotate = [a, b, c, d]
+    @rotation = [a, b, c, d]
     find_character_index_position
   end
 
@@ -46,8 +50,8 @@ class Encrypt
   def add_rotation_to_position
     counter = 0
     position.each do |num|
-      encrypted_position << num + rotate[counter]
-      counter = (counter + 1) % rotate.length
+      encrypted_position << num + rotation[counter]
+      counter = (counter + 1) % rotation.length
     end
     convert_position_to_encrypted_text
   end

@@ -1,5 +1,5 @@
-require 'pry'
 require_relative 'key'
+require 'pry'
 
 class FileIO
 
@@ -10,7 +10,7 @@ class FileIO
   end
 
   def package_output_file(text)
-    output_file = File.open("encrypted.txt", 'w')
+    output_file = File.open("decrypted.txt", 'w')
     output_file.write(text)
   end
 
