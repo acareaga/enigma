@@ -1,89 +1,35 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/encrypt'
-​
+require '../lib/encrypt'
+
 class EncryptTest < Minitest::Test
-​
-  def test_encrypt_class_exists
-    data = Encrypt.new
-​
-    assert_equal Encrypt, data.class
+
+  def test_it_exists
+    klass = Encrypt.new
+    assert_equal Encrypt, klass.class
   end
-​
-  def test_input_file_returns_text_from_fileio
-    input_file = '../message.txt' #ARGV[0]
-    text = FileIO.new(input_file) #(this had .file on the end - why? test passes without)
-​
-    assert text
+
+  def test_plain_text_returns_from_fileio
+    text = Encrypt.new
+    text.plain_text
+    assert_equal ["i", " ", "a", "m", " ", "h", "a", "p", "p", "y", " ", "t", "o", " ", "j", "o", "i", "n", " ", "w", "i", "t", "h", " ", "y", "o", "u", " ", "t", "o", "d", "a", "y", ".", " ", ".", ".", "e", "n", "d", ".", "."], text.plain_text
   end
-​
-  def test_it_rejects_files_with_invalid_characters
-    skip
-    input_file = '../message.txt' #ARGV[0]
-    text = FileIO.new(input_file).file
-​
-    assert_raises(ArgumentError) { input_file.include?("?") }
-  end
-​
-  def test_text_splits_into_chunks_of_four_letter_long_strings
-    skip
-  end
-​
-  def test_each_string_is_split_into_individual_characters
-    skip
-  end
-​
+
   def test_character_map_exists
-    skip
-    test = Encrypt.new("hello")
-    assert test.character_map
+    text = Encrypt.new
+    text.character_map
+    assert text.character_map
   end
-​
-  def test_character_map_can_access_the_first_character
-    skip
-    test = Encrypt.new("hello")
-    assert_equal "a", test.character_map[0]
+
+  def test_character_map_includes_all_39_characters
+    text = Encrypt.new
+    text.character_map
+    assert_equal 39, text.character_map.length
   end
-​
-  def test_character_map_can_access_the_last_character
-    skip
-    test = Encrypt.new("hello")
-    assert_equal ",", test.character_map[-1]
+
+  def test_date_is_formatted_correct
+
   end
-​
-  def test_character_map_can_access_a_character_in_the_middle
-    skip
-    test = Encrypt.new("hello")
-    assert_equal "p", test.character_map[15]
-    assert_equal 15, test.character_map.index("p")
-  end
-​
-  def test_character_map_does_not_include_invalid_characters
-    skip
-    test = Encrypt.new("hello")
-    refute test.character_map.include?("?")
-  end
-​
-  def test_we_can_navigate_the_character_map_forward
-    skip
-    test = Encrypt.new("hello")
-    assert_equal
-  end
-​
-  def test_we_can_navigate_the_character_map_backwards
-    skip
-  end
-​
-  def test_we_can_find_position_of_first_character
-    text = [["I", " ", "a", "m"],["I", " ", "a", "m"]]
-    character = text[0][0]
-    assert_equal "I", character
-  end
-​
-  def test_we_can_find_character_position_in_map
-    skip
-    position = map.find_index("#{character.downcase}")
-  end
-​
+
 end

@@ -2,7 +2,6 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require '../lib/fileio'
-require 'pry'
 
 class FileIOTest < Minitest::Test
 
@@ -18,7 +17,7 @@ class FileIOTest < Minitest::Test
 
   def test_fileio_packages_output_file
     skip
-    encrypt_text = # NEED TO ADD CONVERTER STUFF
+    encrypt_text = "12cs3sdsdf"
     output_file = File.open("encrypted.txt", 'w')
     output_file.write(encrypt_text)
     assert_equal encrypted_text, output_file

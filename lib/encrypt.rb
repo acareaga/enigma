@@ -10,7 +10,7 @@ class Encrypt
               :character_map, :key, :date
 
   def initialize
-    input_file = ARGV[0] # './message.txt'
+    input_file = ARGV[0] # '../message.txt'
     @io = FileIO.new(input_file)
     @plain_text = @io.file.chars
     @position = []
@@ -21,9 +21,13 @@ class Encrypt
     create_offset_and_key
   end
 
-  def valid_characters_in_input?
-    # fail ArgumentError if text includes characters not on character map
-  end
+  # def valid_characters_in_input?
+  #   if character_map.include?(plain_text)
+  #     create_offset_and_key
+  #   else
+  #     puts "An invalid character exists in the input file."
+  #   end
+  # end
 
   def create_offset_and_key
     offset = Offset.new
