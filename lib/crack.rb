@@ -6,8 +6,8 @@ require 'pry'
 class Crack
 
   attr_reader :plain_text, :position, :rotation, :encrypted_end_position, :encrypted_key,
-              :decrypted_position, :encrypted_text, :counter, :abcd_position,
-              :character_map, :key, :date, :key_position, :array_of_chunks
+              :decrypted_position, :encrypted_text, :counter, :end_position,
+              :character_map, :key, :date, :key_position
 
   def initialize
     input_file = ARGV[0]
@@ -18,16 +18,16 @@ class Crack
     @decrypted_position = []
     @plain_text = []
     @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    find_abcd_of_last_four_encrypted_text
+    find_end_index_positions
   end
 
-  def find_abcd_of_last_four_encrypted_text
+  def find_end_index_positions
     length = encrypted_text.length
-    @abcd_position = []
-    abcd_position << (length - 4) % 4
-    abcd_position << (length - 3) % 4
-    abcd_position << (length - 2) % 4
-    abcd_position << (length - 1) % 4
+    @end_position = []
+    end_position << (length - 4) % 4
+    end_position << (length - 3) % 4
+    end_position << (length - 2) % 4
+    end_position << (length - 1) % 4
     find_encrypted_end_text_and_position
   end
 
@@ -51,7 +51,7 @@ class Crack
   end
 
   def combine_position_and_key_for_rotation
-    rotate = Hash[abcd_position.zip(encrypted_key)]
+    rotate = Hash[end_position.zip(encrypted_key)]
     @key = rotate.map.with_index do |char, index|
       rotate[index]
     end
@@ -85,7 +85,7 @@ class Crack
   def cracked_output_file
     @plain_text = plain_text.join
     @io.package_cracked_file(@plain_text)
-    puts "Created '#{ARGV[1]}' with the cracked key #{key} and date #{ARGV[3]}"
+    puts "Created '#{ARGV[1]}' with the cracked key #{key.join} and date #{date}"
   end
 
 end

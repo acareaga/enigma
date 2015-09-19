@@ -1,7 +1,7 @@
-gem 'minitest'
+require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'key'
+require_relative '../lib/key'
 ​
 class KeyTest < Minitest::Test
 ​

@@ -1,7 +1,7 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'cracked'
+require_relative '../lib/crack'
 
 class CrackedTest < Minitest::Test
 
