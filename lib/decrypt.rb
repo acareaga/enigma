@@ -13,7 +13,7 @@ class Decrypt
     input_file = ARGV[0]
     @key = 34955 # ARGV[2]
     @date = 170915 # ARGV[3]
-    @io = FileIO.new(input_file)
+    @io = Fileio.new(input_file)
     @encrypted_text = @io.file.chars
     @position = []
     @encrypted_position = []

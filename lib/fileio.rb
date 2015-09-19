@@ -1,7 +1,7 @@
 require_relative 'key'
 require 'pry'
 
-class FileIO
+class Fileio
 
   attr_reader :file, :output_file, :encrypted_text
 

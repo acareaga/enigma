@@ -11,7 +11,7 @@ class Encrypt
 
   def initialize
     input_file = ARGV[0]
-    @io = FileIO.new(input_file)
+    @io = Fileio.new(input_file)
     @plain_text = @io.file.chars
     @position = []
     @encrypted_position = []
