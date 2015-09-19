@@ -1,7 +1,7 @@
-require 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../lib/encrypt'
+require "minitest"
+require "minitest/autorun"
+require "minitest/pride"
+require_relative "../lib/encrypt"
 
 class EncryptTest < Minitest::Test
 

@@ -6,7 +6,7 @@ class Fileio
   attr_reader :file, :output_file, :encrypted_text
 
   def initialize(input_file)
-    @file = File.open(input_file).read.chomp.gsub("\n\n", " ").downcase
+    @file = File.open(input_file).read.chomp.gsub("\n\n", " ").gsub("\n", " ").downcase
   end
 
   def package_encrypted_file(text)

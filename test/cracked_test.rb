@@ -1,9 +1,9 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/decrypt'
+require_relative '../lib/crack'
 
-class DecryptTest < Minitest::Test
+class CrackedTest < Minitest::Test
 
 
 end
