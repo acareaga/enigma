@@ -1,5 +1,5 @@
-require_relative 'key'
 require 'pry'
+require_relative 'key'
 
 class Fileio
 
@@ -9,8 +9,18 @@ class Fileio
     @file = File.open(input_file).read.chomp.gsub("\n\n", " ").downcase
   end
 
-  def package_output_file(text)
+  def package_encrypted_file(text)
+    output_file = File.open("encrypted.txt", 'w')
+    output_file.write(text)
+  end
+
+  def package_decrypted_file(text)
     output_file = File.open("decrypted.txt", 'w')
+    output_file.write(text)
+  end
+
+  def package_cracked_file(text)
+    output_file = File.open("cracked.txt", 'w')
     output_file.write(text)
   end
 
