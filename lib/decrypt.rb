@@ -5,7 +5,7 @@ require 'pry'
 
 class Decrypt
 
-  attr_reader :plain_text, :position, :rotation, :encrypted_position,
+  attr_reader :plain_text, :position, :rotation,
               :decrypted_position, :encrypted_text, :counter,
               :character_map, :key, :date, :key_position, :array_of_chunks
 
@@ -16,7 +16,6 @@ class Decrypt
     @io = FileIO.new(input_file)
     @encrypted_text = @io.file.chars
     @position = []
-    @encrypted_position = []
     @decrypted_position = []
     @plain_text = []
     @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
@@ -38,29 +37,13 @@ class Decrypt
     @encrypted_text.each do |string|
       position << character_map.find_index(string)
     end
-    # @encrypted_position = position
     reverse_rotation
   end
-
-  # def starting_point #for backward rotation
-  #   #position => index of encrypted msg
-  #   counter = position % 4
-  #   if counter == 0
-  #     #start with the d rotation
-  #   elsif counter == 1
-  #     #rotation a
-  #   elsif counter == 2
-  #     #rotation b
-  #   else counter == 3
-  #     #rotation c
-  #
-  #   reverse_rotation
-  # end
 
   def reverse_rotation
     counter = 0
     position.each do |num|
-      @decrypted_position << num - rotation[counter]
+      decrypted_position << num - rotation[counter]
       counter = (counter + 1) % rotation.length
     end
     convert_to_plain_text

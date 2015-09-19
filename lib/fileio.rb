@@ -19,7 +19,7 @@ class FileIO
     output_file.write(text)
   end
 
-  def package_crack_file(text)
+  def package_cracked_file(text)
     output_file = File.open("cracked.txt", 'w')
     output_file.write(text)
   end
