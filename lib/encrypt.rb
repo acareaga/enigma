@@ -4,7 +4,6 @@ require './lib/key'
 require 'pry'
 
 class Encrypt
-
   attr_reader :plain_text, :position, :rotate,
               :encrypted_position, :encrypted_text,
               :character_map, :key, :date
@@ -16,8 +15,8 @@ class Encrypt
     @position = []
     @encrypted_position = []
     @encrypted_text = []
-    @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    @date = Date.today.strftime("%d%m%y")
+    @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [' ', '.', ',']
+    @date = Date.today.strftime('%d%m%y')
     create_offset_and_key
   end
 
@@ -25,7 +24,7 @@ class Encrypt
   #   if character_map.include?(plain_text)
   #     create_offset_and_key
   #   else
-  #     puts "An invalid character exists in the input file."
+  #     puts "ERROR: an invalid character exists in the input file."
   #   end
   # end
 
@@ -68,7 +67,6 @@ class Encrypt
     @io.package_encrypted_file(@encrypted_text)
     puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{@date}"
   end
-
 end
 
 Encrypt.new

@@ -2,7 +2,7 @@ gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/key'
-​
+
 class KeyTest < Minitest::Test
 ​
   def test_the_key_generates_a_random_five_digit_number

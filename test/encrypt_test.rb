@@ -1,7 +1,7 @@
-require "minitest"
-require "minitest/autorun"
-require "minitest/pride"
-require "../lib/encrypt"
+require 'minitest'
+require 'minitest/autorun'
+require 'minitest/pride'
+require '../lib/encrypt'
 
 class EncryptTest < Minitest::Test
 
@@ -12,10 +12,13 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_rejects_files_with_invalid_characters
+    skip
+    test = Encrypt.new
 
   end
 
   def test_input_file_turns_string_into_individual_characters
+    skip
     test = Encrypt.new
     test.plain_text
 
