@@ -10,7 +10,7 @@ class Encrypt
               :character_map, :key, :date
 
   def initialize
-    input_file = ARGV[0] # '../message.txt'
+    input_file = ARGV[0]
     @io = FileIO.new(input_file)
     @plain_text = @io.file.chars
     @position = []
@@ -72,3 +72,7 @@ class Encrypt
 end
 
 Encrypt.new
+
+# if __FILE__ == $PROGRAM_NAME
+#   Encrypt.new(ARGV[0])
+# end

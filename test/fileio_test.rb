@@ -1,7 +1,7 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require '../lib/fileio'
+require 'fileio'
 require 'pry'
 
 class FileIOTest < Minitest::Test

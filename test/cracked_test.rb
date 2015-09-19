@@ -1,9 +1,9 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'decrypt'
+require 'cracked'
 
-class DecryptTest < Minitest::Test
+class CrackedTest < Minitest::Test
 
 
 end
