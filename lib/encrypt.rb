@@ -5,33 +5,19 @@ require 'pry'
 
 class Encrypt
 
-  attr_reader :plain_text, :position, :rotate,
-              :encrypted_position, :encrypted_text,
-              :character_map, :key, :date
+  attr_reader :plain_text, :position, :rotate, :character_map,
+              :encrypted_position, :encrypted_text, :key
 
   def initialize
     input_file = ARGV[0] # './message.txt'
     @io = FileIO.new(input_file)
     @plain_text = @io.file.chars
-    @position = []
-    @encrypted_position = []
-    @encrypted_text = []
     @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
-    @date = Date.today.strftime("%d%m%y")
-    create_offset_and_key
+    combine_offset_and_key
   end
 
-  # def valid_characters_in_input?
-  #   if character_map.include?(plain_text) == true
-  #     create_offset_and_key
-  #   else
-  #     puts "An invalid character exists in the input file."
-  #   end
-  # end
-
-  def create_offset_and_key
-    offset = Offset.new
-    @key = Key.new
+  def combine_offset_and_key
+    @key, offset = Key.new, Offset.new
     a = offset.position[0] + key.position[0].to_i
     b = offset.position[1] + key.position[1].to_i
     c = offset.position[2] + key.position[2].to_i
@@ -41,13 +27,15 @@ class Encrypt
   end
 
   def find_character_index_position
-    @plain_text.each do |string|
+    @position = []
+    plain_text.each do |string|
       position << character_map.find_index(string)
     end
-    add_rotation_to_position
+    rotate_position
   end
 
-  def add_rotation_to_position
+  def rotate_position
+    @encrypted_position = []
     counter = 0
     position.each do |num|
       encrypted_position << num + rotate[counter]
@@ -57,6 +45,7 @@ class Encrypt
   end
 
   def convert_position_to_encrypted_text
+    @encrypted_text = []
     encrypted_position.each do |num|
       encrypted_text << character_map.rotate(num)[0]
     end
@@ -64,11 +53,10 @@ class Encrypt
   end
 
   def encrypt_output_file
-    @encrypted_text = encrypted_text.join
-    @io.package_encrypted_file(@encrypted_text)
-    puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{@date}"
+    date = Date.today.strftime("%d%m%y")
+    @io.package_encrypted_file(encrypted_text.join)
+    puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{date}"
   end
-
 end
 
 Encrypt.new

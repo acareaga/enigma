@@ -1,6 +1,4 @@
 require './lib/fileio'
-require './lib/offset'
-require './lib/key'
 require 'pry'
 
 class Crack
@@ -14,16 +12,13 @@ class Crack
     @date = ARGV[2]
     @io = FileIO.new(input_file)
     @encrypted_text = @io.file.chars
-    @position = []
-    @decrypted_position = []
-    @plain_text = []
     @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
     find_end_index_positions
   end
 
   def find_end_index_positions
-    length = encrypted_text.length
     @end_position = []
+    length = encrypted_text.length
     end_position << (length - 4) % 4
     end_position << (length - 3) % 4
     end_position << (length - 2) % 4
@@ -32,8 +27,8 @@ class Crack
   end
 
   def find_encrypted_end_text_and_position
-    encrypted_end_text = encrypted_text[-4..-1]
     @encrypted_end_position = []
+    encrypted_end_text = encrypted_text[-4..-1]
     encrypted_end_text.each do |character|
       encrypted_end_position << character_map.index(character).to_i
     end
@@ -41,8 +36,8 @@ class Crack
   end
 
   def find_key_for_encrypted_text
-    true_position = [13, 3, 37, 37]
     @encrypted_key = []
+    true_position = [13, 3, 37, 37]
     encrypted_key << (39 - true_position[0]) + encrypted_end_position[0]
     encrypted_key << (39 - true_position[1]) + encrypted_end_position[1]
     encrypted_key << (39 - true_position[2]) + encrypted_end_position[2]
@@ -60,13 +55,15 @@ class Crack
   end
 
   def find_character_index_position
-    @encrypted_text.each do |string|
+    @position = []
+    encrypted_text.each do |string|
       position << character_map.find_index(string)
     end
     reverse_rotation
   end
 
   def reverse_rotation
+    @decrypted_position = []
     counter = 0
     position.each do |num|
       decrypted_position << num - key[counter]
@@ -76,6 +73,7 @@ class Crack
   end
 
   def convert_to_plain_text
+    @plain_text = []
     decrypted_position.each do |num|
       plain_text << character_map.rotate(num)[0]
     end
@@ -83,11 +81,9 @@ class Crack
   end
 
   def cracked_output_file
-    @plain_text = plain_text.join
-    @io.package_cracked_file(@plain_text)
+    @io.package_cracked_file(plain_text.join)
     puts "Created '#{ARGV[1]}' with the cracked key #{key.join} and date #{date}"
   end
-
 end
 
 Crack.new
