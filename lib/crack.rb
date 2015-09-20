@@ -1,4 +1,6 @@
 require './lib/fileio'
+require './lib/offset'
+require './lib/key'
 require 'pry'
 
 class Crack
