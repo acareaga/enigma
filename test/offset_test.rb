@@ -1,13 +1,13 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'offset'
+require './lib/offset'
 
 class OffsetTest < Minitest::Test
 
   def test_date_exists_and_is_formatted_correctly
     today = Offset.new
-    assert_equal "150915", today.date
+    assert_equal "210915", today.date
   end
 
   def test_offset_takes_last_four_digits
