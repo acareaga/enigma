@@ -7,7 +7,7 @@ class Crack
 
   attr_reader :plain_text, :position, :map_position, :difference,
               :decrypted_position, :encrypted_text, :counter, :date,
-              :character_map, :key, :key_position, :remainder
+              :character_map, :key, :key_position, :remainder, :rotation
 
   def initialize(input_file)
     @date = ARGV[2]
@@ -42,11 +42,11 @@ class Crack
     difference << (39 - true_position[1]) + map_position[1]
     difference << (39 - true_position[2]) + map_position[2]
     difference << (39 - true_position[3]) + map_position[3]
-    find_key_based_on_rotation
+    allign_rotation_index
   end
 
-  def find_key_based_on_rotation
-    rotation = Hash[remainder.zip(difference)]
+  def allign_rotation_index
+    @rotation = Hash[remainder.zip(difference)]
     @key = rotation.map.with_index do |char, index|
       rotation[index]
     end
