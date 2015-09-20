@@ -1,7 +1,7 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/key'
+require 'key'
 ​
 class KeyTest < Minitest::Test
 ​

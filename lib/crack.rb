@@ -4,11 +4,10 @@ require 'pry'
 class Crack
 
   attr_reader :plain_text, :position, :map_position, :difference,
-              :decrypted_position, :encrypted_text, :counter, :remainder,
-              :character_map, :key, :date, :key_position
+              :decrypted_position, :encrypted_text, :counter, :date,
+              :character_map, :key, :key_position, :remainder
 
-  def initialize
-    input_file = ARGV[0]
+  def initialize(input_file)
     @date = ARGV[2]
     @io = FileIO.new(input_file)
     @encrypted_text = @io.file.chars
@@ -75,13 +74,15 @@ class Crack
     decrypted_position.each do |num|
       plain_text << character_map.rotate(num)[0]
     end
-    cracked_output_file
+    return_output_file
   end
 
-  def cracked_output_file
+  def return_output_file
     @io.package_cracked_file(plain_text.join)
     puts "Created '#{ARGV[1]}' with the cracked key #{key.join} and date #{date}"
   end
 end
 
-Crack.new
+if __FILE__ == $PROGRAM_NAME
+  Crack.new(ARGV[0])
+end

@@ -7,8 +7,7 @@ class Decrypt
               :decrypted_position, :encrypted_text, :counter,
               :character_map, :key, :date, :key_position
 
-  def initialize
-    input_file = ARGV[0]
+  def initialize(input_file)
     @key = ARGV[2]
     @date = ARGV[3]
     @io = FileIO.new(input_file)
@@ -50,13 +49,15 @@ class Decrypt
     decrypted_position.each do |num|
       plain_text << character_map.rotate(num)[0]
     end
-    decrypt_output_file
+    return_output_file
   end
 
-  def decrypt_output_file
+  def return_output_file
     @io.package_decrypted_file(plain_text.join)
     puts "Created '#{ARGV[1]}' with the key #{ARGV[2]} and date #{ARGV[3]}"
   end
 end
 
-Decrypt.new
+if __FILE__ == $PROGRAM_NAME
+  Decrypt.new(ARGV[0])
+end

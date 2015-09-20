@@ -8,8 +8,7 @@ class Encrypt
   attr_reader :plain_text, :position, :rotate, :character_map,
               :encrypted_position, :encrypted_text, :key
 
-  def initialize
-    input_file = ARGV[0] # './message.txt'
+  def initialize(input_file)
     @io = FileIO.new(input_file)
     @plain_text = @io.file.chars
     @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
@@ -49,14 +48,16 @@ class Encrypt
     encrypted_position.each do |num|
       encrypted_text << character_map.rotate(num)[0]
     end
-    encrypt_output_file
+    return_output_file
   end
 
-  def encrypt_output_file
+  def return_output_file
     date = Date.today.strftime("%d%m%y")
     @io.package_encrypted_file(encrypted_text.join)
     puts "Created '#{ARGV[1]}' with the key #{key.key.join} and date #{date}"
   end
 end
 
-Encrypt.new
+if __FILE__ == $PROGRAM_NAME
+  Encrypt.new(ARGV[0])
+end
