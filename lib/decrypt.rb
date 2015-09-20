@@ -10,8 +10,8 @@ class Decrypt
               :character_map, :key, :date, :key_position
 
   def initialize(input_file)
-    @key = ARGV[2]
-    @date = ARGV[3]
+    @key = ARGV[2] #12345
+    @date = ARGV[3] # 210915
     @io = FileIO.new(input_file)
     @encrypted_text = @io.file.chars
     @character_map = ('a'..'z').to_a + ('0'..'9').to_a + [" ", ".", ","]
