@@ -14,7 +14,7 @@ class DecryptTest < Minitest::Test
     text = Decrypt.new("./encrypted.txt")
     text = Decrypt.new("./encrypted.txt")
     assert_equal 12345, text.key
-    assert_equal 200915, text.date
+    assert_equal 210915, text.date
   end
 
   def test_encrypted_text_converts_to_individual_characters

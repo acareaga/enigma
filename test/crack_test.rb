@@ -37,7 +37,7 @@ class CrackTest < Minitest::Test
 
   def test_difference_from_true_to_encrypted_position
     position = Crack.new("./encrypted.txt")
-    assert_equal 15, position.difference[3]
+    assert_equal 35, position.difference[3]
   end
 
   def test_key_alligns_to_proper_index
