@@ -42,10 +42,10 @@ class Crack
     difference << (39 - true_position[1]) + map_position[1]
     difference << (39 - true_position[2]) + map_position[2]
     difference << (39 - true_position[3]) + map_position[3]
-    allign_rotation_index
+    align_rotation_index
   end
 
-  def allign_rotation_index
+  def align_rotation_index
     @rotation = Hash[remainder.zip(difference)]
     @key = rotation.map.with_index do |char, index|
       rotation[index]
