@@ -39,5 +39,4 @@ class OffsetTest < Minitest::Test
     offset = Offset.new
     assert_equal [7, 2, 2, 5], offset.position
   end
-
 end

@@ -42,5 +42,4 @@ class KeyTest < Minitest::Test
     key = Key.new
     assert_equal ["85", "53", "35", "59"], key.position
   end
-​
 end

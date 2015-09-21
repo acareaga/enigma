@@ -1,6 +1,3 @@
-require 'pry'
-require_relative 'key'
-
 class FileIO
 
   attr_reader :file, :output_file, :encrypted_text
@@ -23,5 +20,4 @@ class FileIO
     output_file = File.open("cracked.txt", 'w')
     output_file.write(text)
   end
-
 end

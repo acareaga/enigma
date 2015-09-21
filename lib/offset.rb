@@ -39,5 +39,4 @@ class Offset
   def position
     [offset[0].to_i, offset[1].to_i, offset[2].to_i, offset[3].to_i]
   end
-
 end

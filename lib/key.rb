@@ -29,5 +29,4 @@ class Key
   def position
     [rotation_a, rotation_b, rotation_c, rotation_d]
   end
-
 end

@@ -54,10 +54,9 @@ class DecryptTest < Minitest::Test
     assert_equal 210915, date
   end
 
-  def test_encrypted_text_returns_from_file_io
+  def test_decrypted_text_returns_from_file_io
     skip
-    output_file = Decrypt.new("./encrypted.txt").return_output_file
-    assert output_file
+    decrypted_file = Decrypt.new("./encrypted.txt").return_output_file
+    assert decrypted_file
   end
-
 end

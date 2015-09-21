@@ -71,8 +71,7 @@ class EncryptTest < Minitest::Test
 
   def test_encrypted_text_returns_from_file_io
     skip
-    text = Encrypt.new("./message.txt").return_output_file
-    assert_equal 'encrypted.txt', text
+    encrypted_file = Encrypt.new("./message.txt").return_output_file
+    assert_equal 'encrypted.txt', encrypted_file
   end
-
 end
